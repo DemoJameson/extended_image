@@ -473,7 +473,7 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor>
 
   final List<EditActionDetails> _history = <EditActionDetails>[];
 
-  /// rotateCropRect works only when (angle % 360).abs() == 90
+  /// rotateCropRect works only when degree.remainder(360).abs() == 90
   @override
   void rotate({
     double degree = 90,
@@ -496,7 +496,7 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor>
     final double end =
         begin + _editActionDetails!.reverseRotateRadians(rotateRadians);
 
-    if (rotateCropRect && (degree % 360).abs() == 90) {
+    if (rotateCropRect && degree.remainder(360).abs() == 90) {
       _rotateCropRect = true;
 
       final double? cropAspectRatio = _editActionDetails?.cropAspectRatio;
